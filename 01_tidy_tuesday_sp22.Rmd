@@ -1,0 +1,48 @@
+---
+title: 'Tidy Tuesday #1'
+author: "Miles Warshauer"
+output: 
+  html_document:
+    df_print: paged
+    code_download: true
+    theme: united
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error=TRUE, message=FALSE, warning=FALSE)
+```
+
+```{r libraries}
+library(tidyverse)     # for graphing and data cleaning
+library(lubridate)     # for date manipulation
+library(ggthemes)      # for even more plotting themes
+theme_set(theme_minimal()) # My favorite ggplot() theme :)
+```
+
+## Data choice 1: Dog breed data
+
+```{r}
+# Read in the data for the week
+breed_traits <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-02-01/breed_traits.csv')
+trait_description <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-02-01/trait_description.csv')
+breed_rank_all <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-02-01/breed_rank.csv')
+```
+
+
+
+```{r, fig.width=12, fig.height=30}
+breed_rank_all %>% 
+  mutate(avg_rank = (`2013 Rank`+`2014 Rank`+`2015 Rank`+`2016 Rank`+`2017 Rank`+`2018 Rank`+`2019 Rank`+`2020 Rank`)/8) %>% 
+  drop_na(avg_rank) %>% 
+  ggplot(aes(x=avg_rank, y=fct_reorder(Breed, avg_rank)))+
+  geom_point(color="deepskyblue4")+
+  labs(x="Average Rank", y="Breed", title="Average Breed Ranking")
+```
+
+
+## Instructions and tips
+
+For this first week, keep your plot simple but meaningful. Don't try to do something really hard, especially right now when you're still developing your R coding skills. Take a minute to plan out on paper or the white board what you want your plot to look like and then dive into the code. And make sure to read about what the variables are first! 
+
+When you are finished, please delete all the unneeded code and instructions and uncomment (delete the `#`) in the options section of code at the top. If you feel up for it, we encourage you to tweet out your graph with the `#TidyTuesday` hashtag and tag `@lisalendway` (Prof. Lisa) and `@Sintripetal` (Prof. Lauren). See the Tidy Tuesday description file if you want to use our `@MacTidyTuesday` Twitter account to do that. PLEASE take a moment to read the message at the top about alt text. If you want to post on Twitter, be sure to add that. If you need help, ask. Also, consider adding a caption or tag label with your name and source of the dataset. You can do this by adding something like: `labs(caption = "Plot created by YOURNAME, data from DATASOURCE")` to your plot code.
+
