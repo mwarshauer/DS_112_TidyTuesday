@@ -45,5 +45,3 @@ airmen %>%
   geom_bar(fill="red3", color="gold3")+
   labs(title="Regional Origin Breakdown of Tuskegee Airmen", x="Region", y="Number of Airmen")
 ```
-When you are finished, please delete all the unneeded code and instructions and uncomment (delete the `#`) in the options section of code at the top. If you feel up for it, we encourage you to tweet out your graph with the `#TidyTuesday` hashtag and tag `@lisalendway` (Prof. Lisa) and `@Sintripetal` (Prof. Lauren). See the Tidy Tuesday description file if you want to use our `@MacTidyTuesday` Twitter account to do that.  If you want to post on Twitter, be sure to add that. If you need help, ask. Also, consider adding a caption or tag label with your name and source of the dataset. You can do this by adding something like: `labs(caption = "Plot created by YOURNAME, data from DATASOURCE")` to your plot code. Also MAKE SURE TO ADD ALT TEXT TO YOUR PLOTS (you'll b graded on that this week), there are good tips on the [TidyTuesday github page](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-02-15/readme.md)
-
